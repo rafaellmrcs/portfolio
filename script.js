@@ -100,6 +100,27 @@ if (track) {
   track.addEventListener("pointercancel", () => (dragging = false));
 }
 
+// Scroll to top button
+const scrollTopBtn = document.getElementById("scrollTopBtn");
+
+if (scrollTopBtn) {
+  // Show/hide button based on scroll position
+  window.addEventListener("scroll", () => {
+    if (window.scrollY > 400) {
+      scrollTopBtn.classList.add("visible");
+    } else {
+      scrollTopBtn.classList.remove("visible");
+    }
+  });
+
+  // Scroll to top on click
+  scrollTopBtn.addEventListener("click", () => {
+    window.scrollTo({
+      top: 0,
+      behavior: "smooth"
+    });
+  });
+}
 
 const form = document.getElementById("contactForm");
 const note = document.getElementById("formNote");
