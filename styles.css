@@ -140,6 +140,12 @@ body{
 .hero{
   padding: 70px 20px 40px;
 }
+.brand--text .brand__text{
+  font-weight: 900;
+  font-size: 16px;
+  letter-spacing: .3px;
+}
+
 .hero__inner{
   max-width: var(--max);
   margin: 0 auto;
@@ -156,6 +162,13 @@ body{
   border-radius: 999px;
   color: var(--muted);
   font-weight: 650;
+}
+@media (max-width: 720px){
+  .badge{
+    width: 100%;
+    justify-content: center;
+    padding: 10px 10px;
+  }
 }
 .dot{
   width: 10px; height: 10px; border-radius: 999px;
@@ -195,11 +208,7 @@ body{
   gap: 6px;
   align-items: flex-start;
 }
-.cta-subtext{
-  font-size: 12px;
-  color: var(--muted2);
-  font-weight: 500;
-}
+
 @media (max-width: 720px){
   .hero__cta{ justify-content: center; }
   .cta-item{ align-items: center; }
@@ -282,7 +291,13 @@ body{
   display: block;
   filter: saturate(1.08) brightness(1.05);
 }
-.name{ font-weight: 900; font-size: 16px; }
+.name{ 
+  font-weight: 900; 
+  font-size: 16px; 
+   white-space: normal;
+}
+.nowrap{ white-space: nowrap; }
+
 .role{ color: var(--muted2); font-size: 13px; margin-bottom: 6px; }
 .badge-small{
   font-size: 12px;
@@ -352,11 +367,17 @@ body{
 }
 .mini__card small{ color: var(--muted2); font-size: 12px; }
 
-.floating{
-  display:flex;
-  gap: 10px;
+.floating {
+  display: flex;
+  gap: 8px;
   margin-top: 14px;
   flex-wrap: wrap;
+  justify-content: flex-start; /* desktop: flat / left */
+}
+@media (max-width: 768px) {
+  .floating {
+    justify-content: center;
+  }
 }
 .tag{
   padding: 10px 12px;
@@ -490,20 +511,18 @@ body{
   background: rgba(0,0,0,0.22);
   border: 1px solid rgba(255,255,255,0.10);
   overflow:hidden;
-  min-height: 290px;
-  display:grid; place-items:center;
+  display:flex;
+  align-items:center;
+  justify-content:center;
 }
-.shot__ph{
+
+.shot img{
   width: 100%;
-  height: 100%;
-  display:grid; place-items:center;
-  color: rgba(255,255,255,0.75);
-  font-weight: 900;
-  background:
-    radial-gradient(circle at 20% 20%, rgba(255,78,205,0.25), transparent 55%),
-    radial-gradient(circle at 70% 60%, rgba(91,140,255,0.22), transparent 55%),
-    rgba(255,255,255,0.03);
+  height: auto;
+  max-height: 100%;
+  object-fit: contain;
 }
+
 .meta{ padding: 10px 8px; }
 .meta h3{ font-weight: 950; letter-spacing:-0.2px; }
 .meta p{ color: var(--muted); margin: 10px 0 12px; }
@@ -651,6 +670,10 @@ label{
   color: rgba(255,255,255,0.86);
   margin-bottom: 10px;
 }
+select option{
+  background: #0a0a12;   /* your dark bg */
+  color: rgba(255,255,255,0.92);
+}
 input, textarea, select{
   width:100%;
   margin-top: 8px;
@@ -717,4 +740,141 @@ input::placeholder, textarea::placeholder{ color: rgba(255,255,255,0.45); }
   .mini{ grid-template-columns: 1fr; }
   .chips{ justify-content: center; gap: 6px 8px; }
   .cta-group{ align-items: center; }
+}
+/* =========================
+   MOBILE ENHANCEMENTS PACK
+   Paste at the END of styles.css
+   ========================= */
+
+/* Better tap + text rendering */
+html { -webkit-text-size-adjust: 100%; }
+body { line-height: 1.55; }
+
+/* Prevent overflow bugs from long words/URLs */
+* { min-width: 0; }
+img { max-width: 100%; height: auto; display: block; }
+
+/* Make sections breathe on small screens */
+@media (max-width: 720px){
+  .hero { padding: 56px 16px 28px; }
+  .section { padding: 56px 16px; }
+  .nav__inner { padding: 14px 16px; }
+}
+
+/* HERO: tighten typography + center layout */
+@media (max-width: 720px){
+  .hero__inner { gap: 18px; }
+  .sub { font-size: 15px; max-width: 60ch; }
+  .stats { gap: 10px; }
+  .stat { padding: 12px; }
+}
+
+/* GLASS CARD TOP: stack avatar + text on mobile */
+@media (max-width: 720px){
+  .glass-card { padding: 16px; }
+  .glass-card__top{
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    gap: 10px;
+  }
+  .avatar{
+    width: 140px;
+    height: 140px;
+    border-radius: 22px;
+  }
+  .name{ font-size: 15px; }
+  .role{ font-size: 13px; margin-bottom: 4px; }
+  .badge-small{ font-size: 12px; }
+}
+
+/* Chips: more compact + centered */
+@media (max-width: 720px){
+  .chips{ justify-content: center; gap: 6px 8px; margin: 14px 0; }
+  .chips span{ padding: 6px 10px; font-size: 12px; }
+}
+
+/* Mini cards: reduce padding so it doesn't feel cramped */
+@media (max-width: 720px){
+  .mini__card{ padding: 14px; }
+  .mini__title{ font-size: 13px; }
+}
+
+/* Floating tags: keep centered + smaller */
+@media (max-width: 720px){
+  .floating{ justify-content: center; gap: 8px; }
+  .tag{ padding: 8px 10px; font-size: 12px; }
+}
+
+/* ABOUT cards: less padding, cleaner type */
+@media (max-width: 720px){
+  .about-card{ padding: 16px; }
+  .about-card h3{ font-size: 16px; }
+  .about-card p{ font-size: 14px; }
+  .list{ gap: 8px; }
+  .list span{ padding: 7px 9px; font-size: 12px; }
+}
+
+/* SERVICES grid already collapses; just reduce height + spacing */
+@media (max-width: 720px){
+  .service{ min-height: auto; padding: 16px; }
+}
+
+/* SLIDER: make the slide stack + let screenshot be responsive */
+@media (max-width: 720px){
+  .slide{
+    grid-template-columns: 1fr;
+    gap: 12px;
+    padding: 14px;
+  }
+  .shot{
+    min-height: 210px; /* smaller than 290 on mobile */
+  }
+  .meta h3{ font-size: 16px; line-height: 1.2; }
+  .meta p{ font-size: 14px; }
+  .meta__row{ gap: 8px; }
+  .chip{ font-size: 12px; padding: 7px 9px; }
+  .slider__controls{ padding: 10px 12px 12px; }
+  .icon-btn{ width: 42px; height: 42px; }
+}
+
+/* CASE (aside): make it not feel squished */
+@media (max-width: 720px){
+  .case{ padding: 16px; }
+  .check{ padding-left: 16px; }
+}
+
+/* PROOF: reduce quote size slightly */
+@media (max-width: 720px){
+  .testimonial{ padding: 16px; }
+  .testimonial p{ font-size: 15px; }
+}
+
+/* CONTACT: make form inputs comfortable on mobile + fix iOS select */
+@media (max-width: 720px){
+  .form, .contact__left{ padding: 16px; }
+  label{ font-size: 13px; }
+  input, textarea, select{
+    font-size: 16px;            /* prevents iOS zoom */
+    padding: 12px 12px;
+    border-radius: 16px;
+  }
+  select{
+    appearance: none;
+    -webkit-appearance: none;
+    background-image: linear-gradient(45deg, transparent 50%, rgba(255,255,255,0.7) 50%),
+                      linear-gradient(135deg, rgba(255,255,255,0.7) 50%, transparent 50%);
+    background-position: calc(100% - 18px) calc(50% - 3px), calc(100% - 12px) calc(50% - 3px);
+    background-size: 6px 6px, 6px 6px;
+    background-repeat: no-repeat;
+    padding-right: 34px; /* room for arrow */
+  }
+  .btn{ width: 100%; justify-content: center; }
+}
+
+/* Tiny screens (old phones): tighten more */
+@media (max-width: 360px){
+  .avatar{ width: 120px; height: 120px; }
+  .tag{ font-size: 11px; }
+  .chips span{ font-size: 11px; }
 }

@@ -72,24 +72,34 @@ buttons.forEach(btn => {
 buildDots();
 
 // Touch/Swipe support
+// Touch/Swipe support (fixed: allow links/buttons to click)
 if (track) {
+  const isInteractive = (el) => el.closest("a, button, input, textarea, select, label");
+
   track.addEventListener("pointerdown", (e) => {
+    // If user is clicking a link or button, don't hijack it
+    if (isInteractive(e.target)) return;
+
     dragging = true;
     startX = e.clientX;
+
+    // Only capture pointer for real drag gestures
     track.setPointerCapture(e.pointerId);
   });
 
   track.addEventListener("pointerup", (e) => {
     if (!dragging) return;
     dragging = false;
+
     const dx = e.clientX - startX;
     if (Math.abs(dx) > 50) {
       goTo(index + (dx < 0 ? 1 : -1));
     }
   });
 
-  track.addEventListener("pointercancel", () => dragging = false);
+  track.addEventListener("pointercancel", () => (dragging = false));
 }
+
 
 const form = document.getElementById("contactForm");
 const note = document.getElementById("formNote");
