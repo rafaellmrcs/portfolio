@@ -1,94 +1,123 @@
-// ===== Theme
-const themeBtn = document.getElementById("themeBtn");
-const THEME_KEY = "phone-sidebar-theme";
+// Premium-feel JS: mobile nav, slider (dots + swipe), scroll reveal, fake contact submit
 
-function applyTheme(theme){
-  document.documentElement.setAttribute("data-theme", theme);
-  localStorage.setItem(THEME_KEY, theme);
+// Mobile nav
+const burger = document.querySelector(".nav__burger");
+const mobile = document.querySelector(".nav__mobile");
+
+if (burger && mobile) {
+  burger.addEventListener("click", () => {
+    mobile.classList.toggle("is-open");
+    mobile.setAttribute("aria-hidden", mobile.classList.contains("is-open") ? "false" : "true");
+  });
+
+  mobile.querySelectorAll("a").forEach(a => {
+    a.addEventListener("click", () => {
+      mobile.classList.remove("is-open");
+      mobile.setAttribute("aria-hidden", "true");
+    });
+  });
 }
 
-const saved = localStorage.getItem(THEME_KEY);
-if (saved === "light" || saved === "dark") {
-  applyTheme(saved);
-} else {
-  const prefersLight = window.matchMedia?.("(prefers-color-scheme: light)")?.matches;
-  applyTheme(prefersLight ? "light" : "dark");
+// Scroll reveal
+const revealEls = document.querySelectorAll(".reveal");
+const io = new IntersectionObserver((entries) => {
+  entries.forEach(e => {
+    if (e.isIntersecting) e.target.classList.add("is-in");
+  });
+}, { threshold: 0.12 });
+
+revealEls.forEach(el => io.observe(el));
+
+// Slider
+const track = document.querySelector(".slider__track");
+const slides = Array.from(document.querySelectorAll(".slide"));
+const dotsWrap = document.querySelector(".dots");
+const buttons = document.querySelectorAll(".icon-btn[data-dir]");
+
+let index = 0;
+let startX = 0;
+let dragging = false;
+
+function buildDots(){
+  if (!dotsWrap) return;
+  dotsWrap.innerHTML = "";
+  slides.forEach((_, i) => {
+    const b = document.createElement("button");
+    b.className = "dotbtn" + (i === index ? " is-active" : "");
+    b.setAttribute("aria-label", `Go to slide ${i+1}`);
+    b.addEventListener("click", () => goTo(i));
+    dotsWrap.appendChild(b);
+  });
 }
 
-themeBtn?.addEventListener("click", () => {
-  const current = document.documentElement.getAttribute("data-theme") || "dark";
-  applyTheme(current === "dark" ? "light" : "dark");
-});
-
-// ===== Sidebar open/close
-const menuBtn = document.getElementById("menuBtn");
-const closeBtn = document.getElementById("closeBtn");
-const sidebar = document.getElementById("sidebar");
-const overlay = document.getElementById("overlay");
-
-function openMenu(){
-  sidebar.classList.add("is-open");
-  overlay.hidden = false;
-  menuBtn.setAttribute("aria-expanded", "true");
-  menuBtn.setAttribute("aria-label", "Close menu");
+function updateDots(){
+  if (!dotsWrap) return;
+  const dots = dotsWrap.querySelectorAll(".dotbtn");
+  dots.forEach((d, i) => d.classList.toggle("is-active", i === index));
 }
 
-function closeMenu(){
-  sidebar.classList.remove("is-open");
-  overlay.hidden = true;
-  menuBtn.setAttribute("aria-expanded", "false");
-  menuBtn.setAttribute("aria-label", "Open menu");
+function goTo(i){
+  index = (i + slides.length) % slides.length;
+  track.style.transform = `translateX(-${index * 100}%)`;
+  updateDots();
 }
 
-menuBtn?.addEventListener("click", () => {
-  const isOpen = sidebar.classList.contains("is-open");
-  isOpen ? closeMenu() : openMenu();
-});
-
-closeBtn?.addEventListener("click", closeMenu);
-overlay?.addEventListener("click", closeMenu);
-
-document.addEventListener("keydown", (e) => {
-  if (e.key === "Escape" && sidebar.classList.contains("is-open")) closeMenu();
-});
-
-// ===== Page switching
-const navItems = Array.from(document.querySelectorAll(".navitem"));
-const pages = Array.from(document.querySelectorAll(".page"));
-const pagesWrap = document.getElementById("pages");
-
-function setPage(name){
-  navItems.forEach(b => b.classList.toggle("is-active", b.dataset.page === name));
-  pages.forEach(p => p.classList.toggle("is-active", p.dataset.page === name));
-  if (pagesWrap) pagesWrap.scrollTop = 0;
-}
-
-navItems.forEach(item => {
-  item.addEventListener("click", () => {
-    setPage(item.dataset.page);
-    closeMenu();
+buttons.forEach(btn => {
+  btn.addEventListener("click", () => {
+    const dir = Number(btn.dataset.dir);
+    goTo(index + dir);
   });
 });
 
-// ===== Footer year
-document.getElementById("year").textContent = String(new Date().getFullYear());
+buildDots();
 
-// ===== Contact form (demo)
+// Touch/Swipe support
+if (track) {
+  track.addEventListener("pointerdown", (e) => {
+    dragging = true;
+    startX = e.clientX;
+    track.setPointerCapture(e.pointerId);
+  });
+
+  track.addEventListener("pointerup", (e) => {
+    if (!dragging) return;
+    dragging = false;
+    const dx = e.clientX - startX;
+    if (Math.abs(dx) > 50) {
+      goTo(index + (dx < 0 ? 1 : -1));
+    }
+  });
+
+  track.addEventListener("pointercancel", () => dragging = false);
+}
+
 const form = document.getElementById("contactForm");
-const statusEl = document.getElementById("status");
+const note = document.getElementById("formNote");
 
-form?.addEventListener("submit", (e) => {
+form.addEventListener("submit", async (e) => {
   e.preventDefault();
-  if (!form.checkValidity()) {
-    statusEl.textContent = "Please fill all fields correctly.";
-    return;
-  }
-  statusEl.textContent = "Sending...";
-  const fd = new FormData(form);
-  const name = (fd.get("name") || "").toString().trim();
+  note.textContent = "Sending...";
 
-  setTimeout(() => {
-    statusEl.textContent = `Thanks${name ? ", " + name : ""}! (Hook this to your backend later.)`;
+  const payload = {
+    name: form.name.value.trim(),
+    email: form.email.value.trim(),
+    service: form.service.value,
+    message: form.message.value.trim(),
+  };
+
+  try {
+    const res = await fetch("/api/contact", {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify(payload),
+    });
+
+    const data = await res.json();
+    if (!res.ok) throw new Error(data?.error || "Failed to send");
+
+    note.textContent = "Sent! I’ll reply soon.";
     form.reset();
-  }, 700);
+  } catch (err) {
+    note.textContent = err.message || "Something went wrong.";
+  }
 });

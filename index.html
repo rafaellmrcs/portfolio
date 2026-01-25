@@ -1,314 +1,434 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="utf-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>Your Name — Phone Portfolio</title>
-  <meta name="description" content="Portfolio inside a phone UI with sidebar menu." />
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>LG Studio — WordPress Dev + VA</title>
   <link rel="stylesheet" href="styles.css" />
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@300;400;600;700;800&display=swap" rel="stylesheet">
 </head>
 <body>
+
+  <!-- Background FX -->
   <div class="bg">
-    <header class="topbar">
-      <div class="brand">
-        <span class="dot"></span>
-        <strong>Your Name</strong>
-        <span class="muted">Programmer • VA</span>
-      </div>
+    <div class="orb orb-a"></div>
+    <div class="orb orb-b"></div>
+    <div class="orb orb-c"></div>
+    <div class="grid"></div>
+    <div class="noise"></div>
+  </div>
 
-      <div class="top-actions">
-        <button class="btn small" id="themeBtn" type="button">Theme</button>
-      </div>
-    </header>
+  <header class="nav">
+    <div class="nav__inner">
+      <a class="brand" href="#top">
+        <span class="brand__mark">RM</span>
+        <span class="brand__text">Studio</span>
+      </a>
 
-    <main class="stage">
-      <section class="phone" aria-label="Portfolio phone">
-        <div class="phone__frame">
-          <div class="phone__notch" aria-hidden="true"></div>
+      <nav class="nav__links" aria-label="Primary">
+        <a href="#about">About</a>
+        <a href="#services">Services</a>
+        <a href="#work">Work</a>
+        <a href="#proof">Proof</a>
+        <a href="#contact" class="pill">Hire Me</a>
+      </nav>
 
-          <div class="phone__screen">
-            <!-- status bar -->
-            <div class="statusbar" aria-hidden="true">
-              <span>9:41</span>
-              <span class="status-icons">
-                <span class="pill"></span>
-                <span class="pill"></span>
-                <span class="pill"></span>
-              </span>
-            </div>
+      <button class="nav__burger" aria-label="Open menu">
+        <span></span><span></span><span></span>
+      </button>
+    </div>
 
-            <!-- app top row -->
-            <div class="appbar">
-           <button class="iconbtn" id="menuBtn" type="button"
-        aria-label="Open menu" aria-expanded="false" aria-controls="sidebar">
-  <svg class="hamburger" viewBox="0 0 24 24" aria-hidden="true">
-    <path d="M4 7h16M4 12h16M4 17h16" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
-  </svg>
-</button>
+    <div class="nav__mobile" aria-hidden="true">
+      <a href="#about">About</a>
+      <a href="#services">Services</a>
+      <a href="#work">Work</a>
+      <a href="#proof">Proof</a>
+      <a href="#contact" class="pill">Hire Me</a>
+    </div>
+  </header>
 
-              <div class="appbar__title">
-                <div class="title">Your Name</div>
-                <div class="subtitle muted">Programmer • VA</div>
-              </div>
+  <main id="top">
+    <!-- HERO -->
+    <section class="hero">
+      <div class="hero__inner">
+        <div class="hero__left reveal">
+          <div class="badge">
+            <span class="dot"></span>
+            Available for projects • WordPress + VA
+          </div>
 
-              <div class="avatar" aria-hidden="true">YN</div>
-            </div>
+          <h1>
+            I build <span class="grad">high-converting WordPress sites</span>
+            and keep businesses running as a <span class="grad2">Virtual Assistant</span>.
+          </h1>
 
-            <!-- overlay for menu -->
-            <div class="overlay" id="overlay" hidden></div>
+          <p class="sub">
+            Clean design, fast performance, and organized execution.
+            You get a website that sells + a VA who makes the chaos behave.
+          </p>
 
-            <!-- sidebar -->
-            <aside class="sidebar" id="sidebar" aria-label="Sidebar menu">
-              <div class="sidebar__head">
-                <div>
-                  <div class="sidebar__name">Your Name</div>
-                  <div class="muted sidebar__role">Programmer • VA</div>
-                </div>
-                <button class="iconbtn" id="closeBtn" type="button" aria-label="Close menu">
-                  ✕
-                </button>
-              </div>
+        <div class="hero__cta">
+  <div class="cta-item">
+    <a class="btn btn--primary" href="#contact">Hire Me</a>
+    <small class="cta-subtext">Free 15-min discovery call</small>
+  </div>
 
-              <nav class="sidenav" aria-label="Sections">
-                <button class="navitem is-active" data-page="home" type="button">Home</button>
-                <button class="navitem" data-page="about" type="button">About</button>
-                <button class="navitem" data-page="work" type="button">Work</button>
-                <button class="navitem" data-page="services" type="button">Services</button>
-                <button class="navitem" data-page="skills" type="button">Skills</button>
-                <button class="navitem" data-page="contact" type="button">Contact</button>
-              </nav>
-
-              <div class="sidebar__foot">
-                <a class="chiplink" href="#" target="_blank" rel="noreferrer">GitHub</a>
-                <a class="chiplink" href="#" target="_blank" rel="noreferrer">LinkedIn</a>
-                <a class="chiplink" href="#" download>CV</a>
-              </div>
-            </aside>
-
-            <!-- content pages (scroll area) -->
-            <div class="pages" id="pages">
-              <!-- HOME -->
-              <section class="page is-active" data-page="home">
-              <div class="card hero hero--centered">
-  <img
-    src="assets\img1.png"
-    alt="Your Name profile photo"
-    class="hero__img hero__img--lg"
-  />
-
-  <p class="kicker">Hi, I’m</p>
-  <h2>Rafael Mercado</h2>
-
-  <p class="muted hero__desc">
-    I build websites + automations and also handle VA tasks: inbox,
-    calendar, docs, reporting.
-  </p>
-
-  <div class="row hero__badges">
-    <span class="badge">Philippines</span>
-    <span class="badge badge--open">Open to work</span>
+  <div class="cta-item">
+    <a class="btn btn--ghost" href="#work">View Work</a>
+    <small class="cta-subtext">See recent projects</small>
   </div>
 </div>
 
 
-
-                <div class="grid2">
-                  <div class="card">
-                    <h3>Featured Work</h3>
-                    <div class="mini-cards">
-                      <article class="mini">
-                        <strong>Project A</strong>
-                        <p class="muted">WordPress / Elementor</p>
-                      </article>
-                      <article class="mini">
-                        <strong>Automation B</strong>
-                        <p class="muted">Forms → Sheets/CRM</p>
-                      </article>
-                      <article class="mini">
-                        <strong>VA System C</strong>
-                        <p class="muted">Inbox + calendar SOP</p>
-                      </article>
-                    </div>
-                  </div>
-
-                  <div class="card">
-                    <h3>Quick Info</h3>
-                    <ul class="meta">
-                      <li><span>Email</span><span>you@email.com</span></li>
-                      <li><span>Location</span><span>Philippines</span></li>
-                      <li><span>Tools</span><span>WP • Sheets • Notion</span></li>
-                    </ul>
-                  </div>
-                </div>
-              </section>
-
-              <!-- ABOUT -->
-              <section class="page" data-page="about">
-                <div class="card">
-                  <h2>About</h2>
-                  <p class="muted">
-                    Replace this with your short bio. Mention what you do, who you help, and what outcomes you deliver.
-                  </p>
-                </div>
-
-                <div class="card">
-                  <h3>What I do</h3>
-                  <ul class="list">
-                    <li>Build responsive websites (custom or WordPress)</li>
-                    <li>Fix bugs, improve speed, and basic SEO</li>
-                    <li>Organize operations: docs, inbox, scheduling, tracking</li>
-                  </ul>
-                </div>
-              </section>
-
-              <!-- WORK -->
-              <section class="page" data-page="work">
-                <div class="card">
-                  <h2>Work</h2>
-                  <p class="muted">Mix dev projects + VA case studies. Show results.</p>
-                </div>
-
-                <article class="card project">
-                  <div class="project__top">
-                    <div>
-                      <h3>Landing Page Build</h3>
-                      <p class="muted">Clean layout + fast load + mobile-first.</p>
-                    </div>
-                    <span class="pillbadge">Dev</span>
-                  </div>
-                  <div class="tags">
-                    <span class="tag">HTML</span><span class="tag">CSS</span><span class="tag">SEO</span>
-                  </div>
-                  <div class="actions">
-                    <a class="btn ghost" href="#" target="_blank" rel="noreferrer">Live</a>
-                    <a class="btn ghost" href="#" target="_blank" rel="noreferrer">Code</a>
-                  </div>
-                </article>
-
-                <article class="card project">
-                  <div class="project__top">
-                    <div>
-                      <h3>Leads Automation</h3>
-                      <p class="muted">Form → Sheets + auto-email + tagging.</p>
-                    </div>
-                    <span class="pillbadge">Ops</span>
-                  </div>
-                  <div class="tags">
-                    <span class="tag">Zapier</span><span class="tag">Sheets</span><span class="tag">Gmail</span>
-                  </div>
-                  <div class="actions">
-                    <a class="btn ghost" href="#" target="_blank" rel="noreferrer">Demo</a>
-                  </div>
-                </article>
-              </section>
-
-              <!-- SERVICES -->
-              <section class="page" data-page="services">
-                <div class="card">
-                  <h2>Services</h2>
-                  <p class="muted">Keep this simple. Clear offers convert.</p>
-                </div>
-
-                <div class="card">
-                  <h3>Web Development</h3>
-                  <ul class="list">
-                    <li>Landing pages + portfolios</li>
-                    <li>WordPress / Elementor builds</li>
-                    <li>Fixes, updates, speed cleanup</li>
-                  </ul>
-                </div>
-
-                <div class="card">
-                  <h3>VA / Operations</h3>
-                  <ul class="list">
-                    <li>Inbox + calendar management</li>
-                    <li>Research + data entry</li>
-                    <li>Reports + tracking dashboards</li>
-                    <li>SOPs + documentation</li>
-                  </ul>
-                </div>
-              </section>
-
-              <!-- SKILLS -->
-              <section class="page" data-page="skills">
-                <div class="card">
-                  <h2>Skills</h2>
-                  <p class="muted">Split dev and VA.</p>
-                </div>
-
-                <div class="card">
-                  <h3>Programming</h3>
-                  <ul class="chips">
-                    <li>HTML</li><li>CSS</li><li>JavaScript</li><li>WordPress</li><li>Elementor</li><li>Git</li>
-                  </ul>
-                </div>
-
-                <div class="card">
-                  <h3>VA / Ops</h3>
-                  <ul class="chips">
-                    <li>Google Workspace</li><li>Spreadsheets</li><li>Notion/Trello</li><li>Customer Support</li><li>SOPs</li>
-                  </ul>
-                </div>
-              </section>
-
-              <!-- CONTACT -->
-              <section class="page" data-page="contact">
-                <div class="card">
-                  <h2>Contact</h2>
-                  <p class="muted">Demo form — add backend later.</p>
-                </div>
-
-                <div class="card">
-                  <form id="contactForm" class="form" novalidate>
-                    <label class="field">
-                      <span>Name</span>
-                      <input name="name" required placeholder="Your name" />
-                    </label>
-                    <label class="field">
-                      <span>Email</span>
-                      <input name="email" type="email" required placeholder="you@email.com" />
-                    </label>
-                    <label class="field">
-                      <span>Message</span>
-                      <textarea name="message" rows="5" required placeholder="Write your message..."></textarea>
-                    </label>
-                    <button class="btn primary" type="submit">Send</button>
-                    <p class="muted" id="status" role="status" aria-live="polite"></p>
-                  </form>
-                </div>
-
-                <div class="card">
-                  <h3>Direct</h3>
-                  <p class="muted">Email: you@email.com</p>
-                  <p class="muted">Timezone: Asia/Manila</p>
-                </div>
-              </section>
+          <div class="stats">
+            <div class="stat">
+              <div class="stat__num">Fast</div>
+              <div class="stat__label">Performance-first builds</div>
             </div>
-
-            <div class="bottomnav" aria-hidden="true">
-              <span class="homebar"></span>
+            <div class="stat">
+              <div class="stat__num">Clean</div>
+              <div class="stat__label">Modern UI + UX</div>
+            </div>
+            <div class="stat">
+              <div class="stat__num">Reliable</div>
+              <div class="stat__label">VA systems + ops support</div>
             </div>
           </div>
         </div>
-      </section>
 
-      <!-- Desktop helper panel -->
-      <aside class="side">
-        <h2>Sidebar menu version</h2>
-        <p class="muted">
-          Open the menu inside the phone (top-left). It’s a real “app” feel and easy to add more pages.
-        </p>
-        <div class="tip">
-          <strong>Pro move:</strong>
-          <span class="muted">Add “Testimonials” and “Pricing” later as new sidebar items.</span>
+        <div class="hero__right reveal">
+          <div class="glass-card">
+            <div class="glass-card__top">
+              <div class="avatar">
+                <img src="assets/img1.png" alt="Rafael Mercado">
+              </div>
+              <div>
+                <div class="name">Rafael Mercado • WP Dev + VA</div>
+                <div class="role">Web builds • Admin systems • Support</div>
+                <div class="badge-small">⭐ 20+ WordPress Sites Built</div>
+              </div>
+            </div>
+
+            <div class="chips">
+              <span>Elementor</span>
+              <span>Speed</span>
+              <span>SEO</span>
+              <span>Automation</span>
+              <span>Notion</span>
+            </div>
+
+            <div class="mini">
+              <div class="mini__card">
+                <div class="mini__title">What you get</div>
+                <ul>
+                  <li><span class="bullet-icon">✓</span> Premium site layout</li>
+                  <li><span class="bullet-icon">✓</span> Mobile-first design</li>
+                  <li><span class="bullet-icon">✓</span> Smart VA workflows</li>
+                </ul>
+              </div>
+              <div class="mini__card">
+                <div class="mini__title">Turnaround</div>
+                <p>Clear timeline + weekly updates.</p>
+                <div class="mini__bar">
+                  <span style="width: 78%"></span>
+                </div>
+                <small>Typical: 7–14 days</small>
+              </div>
+            </div>
+          </div>
+
+          <div class="floating">
+            <div class="tag">⚡ Speed optimized</div>
+            <div class="tag">🧠 Systems thinking</div>
+            <div class="tag">✨ Vibrant design</div>
+          </div>
         </div>
-      </aside>
-    </main>
+      </div>
+
+      <div class="scroll-hint">Scroll</div>
+    </section>
+
+    <!-- ABOUT -->
+    <section id="about" class="section">
+      <div class="section__head reveal">
+        <h2>Design that sells. Support that scales.</h2>
+        <p>
+          I work like a small studio: strategy + build + ongoing support.
+          WordPress projects get fast performance, clean structure, and an experience that feels premium.
+          VA work gets organized systems and reliable execution.
+        </p>
+      </div>
+
+      <div class="about-grid">
+        <div class="about-card reveal">
+          <h3>WordPress Dev</h3>
+          <p>Custom builds, Elementor, theme customization, speed, SEO-ready structure, maintenance.</p>
+          <div class="list">
+            <span>UI/UX</span><span>Speed</span><span>SEO</span><span>Security</span>
+          </div>
+        </div>
+
+        <div class="about-card reveal">
+          <h3>Virtual Assistant</h3>
+          <p>Email + calendar, CRM updates, admin support, research, client onboarding, social scheduling.</p>
+          <div class="list">
+            <span>Ops</span><span>Systems</span><span>Content</span><span>Support</span>
+          </div>
+        </div>
+
+        <div class="about-card reveal">
+          <h3>How I work</h3>
+          <p>Clear scope, clean communication, and process updates you can trust.</p>
+          <ol class="steps">
+            <li><b>Discovery:</b> goals + audience</li>
+            <li><b>Build:</b> design + pages</li>
+            <li><b>Launch:</b> polish + handoff</li>
+          </ol>
+        </div>
+      </div>
+    </section>
+
+    <!-- SERVICES -->
+    <section id="services" class="section section--alt">
+      <div class="section__head reveal">
+        <h2>Services</h2>
+        <p>Pick what you need. Or mix both for the “done-for-you” experience.</p>
+      </div>
+
+      <div class="service-grid">
+        <div class="service reveal">
+          <div class="service__icon">🧩</div>
+          <h3>WordPress Website Build</h3>
+          <p>Modern layout, mobile-first, clear messaging, and conversion-focused sections.</p>
+          <ul>
+            <li>Home + inner pages</li>
+            <li>Elementor / theme edits</li>
+            <li>Speed + basic SEO</li>
+          </ul>
+        </div>
+
+        <div class="service reveal">
+          <div class="service__icon">🚀</div>
+          <h3>Optimization + Maintenance</h3>
+          <p>Keep it fast, secure, and stable so you can sleep like a happy mammal.</p>
+          <ul>
+            <li>Performance tuning</li>
+            <li>Updates + backups</li>
+            <li>Bug fixes</li>
+          </ul>
+        </div>
+
+        <div class="service reveal">
+          <div class="service__icon">🗂️</div>
+          <h3>Virtual Assistant Support</h3>
+          <p>Admin tasks handled with systems, documentation, and consistency.</p>
+          <ul>
+            <li>Email + calendar</li>
+            <li>CRM + spreadsheets</li>
+            <li>Client support</li>
+          </ul>
+        </div>
+
+        <div class="service reveal">
+          <div class="service__icon">🧠</div>
+          <h3>Systems + Automation</h3>
+          <p>Workflows that remove friction: templates, SOPs, dashboards, and automation ideas.</p>
+          <ul>
+            <li>Notion hubs</li>
+            <li>Process docs</li>
+            <li>Task pipelines</li>
+          </ul>
+        </div>
+      </div>
+    </section>
+
+    <!-- WORK / PORTFOLIO -->
+    <section id="work" class="section">
+      <div class="section__head reveal">
+        <h2>Selected Work</h2>
+        <p>Replace the images + links with your real projects. The structure is “case-study ready.”</p>
+      </div>
+
+      <div class="work-wrap reveal">
+        <div class="slider" aria-label="Portfolio slider">
+          <div class="slider__track">
+            <article class="slide">
+              <div class="shot">
+                <!-- Replace with your image -->
+                <div class="shot__ph">Project Screenshot 1</div>
+              </div>
+              <div class="meta">
+                <h3>Client Website • Landing + Blog</h3>
+                <p>Modern layout, speed pass, clean structure for SEO.</p>
+                <div class="meta__row">
+                  <span class="chip">WordPress</span>
+                  <span class="chip">Elementor</span>
+                  <span class="chip">Optimization</span>
+                </div>
+                <a class="link" href="#" target="_blank" rel="noopener">View Live →</a>
+              </div>
+            </article>
+
+            <article class="slide">
+              <div class="shot">
+                <div class="shot__ph">Project Screenshot 2</div>
+              </div>
+              <div class="meta">
+                <h3>Service Site • Booking Flow</h3>
+                <p>Clear conversion sections + simple funnel logic.</p>
+                <div class="meta__row">
+                  <span class="chip">WordPress</span>
+                  <span class="chip">UI/UX</span>
+                  <span class="chip">Forms</span>
+                </div>
+                <a class="link" href="#" target="_blank" rel="noopener">View Live →</a>
+              </div>
+            </article>
+
+            <article class="slide">
+              <div class="shot">
+                <div class="shot__ph">Project Screenshot 3</div>
+              </div>
+              <div class="meta">
+                <h3>E-commerce • Cleanup + Speed</h3>
+                <p>Performance tuning and layout polish for smoother shopping.</p>
+                <div class="meta__row">
+                  <span class="chip">WooCommerce</span>
+                  <span class="chip">Speed</span>
+                  <span class="chip">Maintenance</span>
+                </div>
+                <a class="link" href="#" target="_blank" rel="noopener">View Live →</a>
+              </div>
+            </article>
+          </div>
+
+          <div class="slider__controls">
+            <button class="icon-btn" data-dir="-1" aria-label="Previous slide">←</button>
+            <div class="dots" aria-label="Slide dots"></div>
+            <button class="icon-btn" data-dir="1" aria-label="Next slide">→</button>
+          </div>
+        </div>
+
+        <aside class="case reveal">
+          <h3>What makes this “premium”</h3>
+          <ul class="check">
+            <li><b>Hierarchy:</b> clear headings + readable spacing</li>
+            <li><b>Motion:</b> subtle, modern, not circus</li>
+            <li><b>Trust:</b> proof section + process + contact clarity</li>
+            <li><b>Conversion:</b> CTA where it matters</li>
+          </ul>
+
+          <div class="callout">
+            <div class="callout__title">Tip</div>
+            <p>Add 3 real case studies + 2 testimonials and you instantly look 10x more expensive.</p>
+          </div>
+        </aside>
+      </div>
+    </section>
+
+    <!-- PROOF -->
+    <section id="proof" class="section section--alt">
+      <div class="section__head reveal">
+        <h2>Proof & Personality</h2>
+        <p>People pay for confidence. This section quietly screams “safe hands.”</p>
+      </div>
+
+      <div class="proof-grid">
+        <div class="testimonial reveal">
+          <p>“Fast communication, clean build, and the site finally feels premium.”</p>
+          <div class="who">
+            <div class="who__dot"></div>
+            <div>
+              <b>Client Name</b>
+              <small>Service-based business</small>
+            </div>
+          </div>
+        </div>
+
+        <div class="testimonial reveal">
+          <p>“VA support is organized and proactive. My week stopped exploding.”</p>
+          <div class="who">
+            <div class="who__dot"></div>
+            <div>
+              <b>Client Name</b>
+              <small>Coach / Consultant</small>
+            </div>
+          </div>
+        </div>
+
+        <div class="testimonial reveal">
+          <p>“Speed improved, pages look better, and everything is easier to manage.”</p>
+          <div class="who">
+            <div class="who__dot"></div>
+            <div>
+              <b>Client Name</b>
+              <small>E-commerce</small>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- CONTACT -->
+    <section id="contact" class="section">
+      <div class="contact reveal">
+        <div class="contact__left">
+          <h2>Let’s build something clean and profitable.</h2>
+          <p>
+            Tell me what you need (website, VA support, or both). I’ll reply with next steps and a clear plan.
+          </p>
+
+          <div class="contact__info">
+            <div class="info">
+              <div class="info__k">Email</div>
+              <div class="info__v">rafaellmrcs@gmail.com</div>
+            </div>
+            <div class="info">
+              <div class="info__k">Timezone</div>
+              <div class="info__v">Asia/Manila</div>
+            </div>
+          </div>
+        </div>
+
+        <form class="form" id="contactForm">
+          <div class="row">
+            <label>
+              Name
+              <input type="text" name="name" placeholder="Your name" required />
+            </label>
+            <label>
+              Email
+              <input type="email" name="email" placeholder="you@email.com" required />
+            </label>
+          </div>
+
+          <label>
+            What do you need?
+            <select name="service" required>
+              <option value="" disabled selected>Select one</option>
+              <option>WordPress Website</option>
+              <option>VA Support</option>
+              <option>Both</option>
+            </select>
+          </label>
+
+          <label>
+            Message
+            <textarea name="message" rows="5" placeholder="Describe your project, timeline, and goals..." required></textarea>
+          </label>
+
+          <button class="btn btn--primary" type="submit">Send Message</button>
+          <p class="form__note" id="formNote" aria-live="polite"></p>
+        </form>
+      </div>
+    </section>
 
     <footer class="footer">
-      <p class="muted">© <span id="year"></span> Your Name</p>
+      <p>© 2026 Rafael Mercado • WordPress Dev + VA </p>
     </footer>
-  </div>
+  </main>
 
   <script src="script.js"></script>
 </body>
