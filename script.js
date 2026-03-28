@@ -122,33 +122,93 @@ if (scrollTopBtn) {
   });
 }
 
+const projectTriggers = document.querySelectorAll(".project-trigger");
+const projectModals = document.querySelectorAll(".project-modal");
+let activeModal = null;
+let lastTrigger = null;
+
+function closeProjectModal() {
+  if (!activeModal) return;
+
+  activeModal.classList.remove("is-open");
+  activeModal.setAttribute("aria-hidden", "true");
+  document.body.classList.remove("modal-open");
+
+  if (lastTrigger) {
+    lastTrigger.focus();
+  }
+
+  activeModal = null;
+}
+
+function openProjectModal(modal, trigger) {
+  if (!modal) return;
+
+  if (activeModal && activeModal !== modal) {
+    closeProjectModal();
+  }
+
+  activeModal = modal;
+  lastTrigger = trigger;
+  activeModal.classList.add("is-open");
+  activeModal.setAttribute("aria-hidden", "false");
+  document.body.classList.add("modal-open");
+
+  const closeButton = activeModal.querySelector(".project-modal__close");
+  if (closeButton) {
+    closeButton.focus();
+  }
+}
+
+projectTriggers.forEach((trigger) => {
+  trigger.addEventListener("click", () => {
+    const targetId = trigger.dataset.modalTarget;
+    const modal = document.getElementById(targetId);
+    openProjectModal(modal, trigger);
+  });
+});
+
+projectModals.forEach((modal) => {
+  modal.querySelectorAll("[data-modal-close]").forEach((element) => {
+    element.addEventListener("click", () => closeProjectModal());
+  });
+});
+
+document.addEventListener("keydown", (event) => {
+  if (event.key === "Escape") {
+    closeProjectModal();
+  }
+});
+
 const form = document.getElementById("contactForm");
 const note = document.getElementById("formNote");
 
-form.addEventListener("submit", async (e) => {
-  e.preventDefault();
-  note.textContent = "Sending...";
+if (form && note) {
+  form.addEventListener("submit", async (e) => {
+    e.preventDefault();
+    note.textContent = "Sending...";
 
-  const payload = {
-    name: form.name.value.trim(),
-    email: form.email.value.trim(),
-    service: form.service.value,
-    message: form.message.value.trim(),
-  };
+    const payload = {
+      name: form.name.value.trim(),
+      email: form.email.value.trim(),
+      service: form.service.value,
+      message: form.message.value.trim(),
+    };
 
-  try {
-    const res = await fetch("/api/contact", {
-      method: "POST",
-      headers: { "Content-Type": "application/json" },
-      body: JSON.stringify(payload),
-    });
+    try {
+      const res = await fetch("/api/contact", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify(payload),
+      });
 
-    const data = await res.json();
-    if (!res.ok) throw new Error(data?.error || "Failed to send");
+      const data = await res.json();
+      if (!res.ok) throw new Error(data?.error || "Failed to send");
 
-    note.textContent = "Sent! I’ll reply soon.";
-    form.reset();
-  } catch (err) {
-    note.textContent = err.message || "Something went wrong.";
-  }
-});
+      note.textContent = "Sent! I’ll reply soon.";
+      form.reset();
+    } catch (err) {
+      note.textContent = err.message || "Something went wrong.";
+    }
+  });
+}
