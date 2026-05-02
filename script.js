@@ -1,5 +1,3 @@
-// Premium-feel JS: mobile nav, slider (dots + swipe), scroll reveal, fake contact submit
-
 // Mobile nav
 const burger = document.querySelector(".nav__burger");
 const mobile = document.querySelector(".nav__mobile");
@@ -27,78 +25,6 @@ const io = new IntersectionObserver((entries) => {
 }, { threshold: 0.12 });
 
 revealEls.forEach(el => io.observe(el));
-
-// Slider
-const track = document.querySelector(".slider__track");
-const slides = Array.from(document.querySelectorAll(".slide"));
-const dotsWrap = document.querySelector(".dots");
-const buttons = document.querySelectorAll(".icon-btn[data-dir]");
-
-let index = 0;
-let startX = 0;
-let dragging = false;
-
-function buildDots(){
-  if (!dotsWrap) return;
-  dotsWrap.innerHTML = "";
-  slides.forEach((_, i) => {
-    const b = document.createElement("button");
-    b.className = "dotbtn" + (i === index ? " is-active" : "");
-    b.setAttribute("aria-label", `Go to slide ${i+1}`);
-    b.addEventListener("click", () => goTo(i));
-    dotsWrap.appendChild(b);
-  });
-}
-
-function updateDots(){
-  if (!dotsWrap) return;
-  const dots = dotsWrap.querySelectorAll(".dotbtn");
-  dots.forEach((d, i) => d.classList.toggle("is-active", i === index));
-}
-
-function goTo(i){
-  index = (i + slides.length) % slides.length;
-  track.style.transform = `translateX(-${index * 100}%)`;
-  updateDots();
-}
-
-buttons.forEach(btn => {
-  btn.addEventListener("click", () => {
-    const dir = Number(btn.dataset.dir);
-    goTo(index + dir);
-  });
-});
-
-buildDots();
-
-// Touch/Swipe support
-// Touch/Swipe support (fixed: allow links/buttons to click)
-if (track) {
-  const isInteractive = (el) => el.closest("a, button, input, textarea, select, label");
-
-  track.addEventListener("pointerdown", (e) => {
-    // If user is clicking a link or button, don't hijack it
-    if (isInteractive(e.target)) return;
-
-    dragging = true;
-    startX = e.clientX;
-
-    // Only capture pointer for real drag gestures
-    track.setPointerCapture(e.pointerId);
-  });
-
-  track.addEventListener("pointerup", (e) => {
-    if (!dragging) return;
-    dragging = false;
-
-    const dx = e.clientX - startX;
-    if (Math.abs(dx) > 50) {
-      goTo(index + (dx < 0 ? 1 : -1));
-    }
-  });
-
-  track.addEventListener("pointercancel", () => (dragging = false));
-}
 
 // Scroll to top button
 const scrollTopBtn = document.getElementById("scrollTopBtn");
