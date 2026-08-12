@@ -27,6 +27,27 @@ const io = new IntersectionObserver((entries) => {
 
 revealEls.forEach(el => io.observe(el));
 
+// Subtle premium tilt for visual cards
+const canUsePointerMotion = !prefersReducedMotion && window.matchMedia("(pointer: fine)").matches;
+
+if (canUsePointerMotion) {
+  document.querySelectorAll(".tilt-card").forEach((card) => {
+    card.addEventListener("pointermove", (event) => {
+      const rect = card.getBoundingClientRect();
+      const x = (event.clientX - rect.left) / rect.width - 0.5;
+      const y = (event.clientY - rect.top) / rect.height - 0.5;
+
+      card.style.setProperty("--tilt-x", `${(-y * 4).toFixed(2)}deg`);
+      card.style.setProperty("--tilt-y", `${(x * 4).toFixed(2)}deg`);
+    });
+
+    card.addEventListener("pointerleave", () => {
+      card.style.setProperty("--tilt-x", "0deg");
+      card.style.setProperty("--tilt-y", "0deg");
+    });
+  });
+}
+
 // Scroll to top button
 const scrollTopBtn = document.getElementById("scrollTopBtn");
 

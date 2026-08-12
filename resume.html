@@ -3,7 +3,8 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Resume — Rafael Mercado</title>
+  <meta name="description" content="Resume for Rafael Mercado, full-stack web developer with CMS, SEO, automation, and VA support experience." />
+  <title>Resume | Rafael Mercado</title>
 
   <link rel="icon" type="image/png" href="https://cdn-icons-png.flaticon.com/512/1055/1055687.png" />
   <link rel="stylesheet" href="styles1.css" />
@@ -20,28 +21,43 @@
   <script defer src="/_vercel/insights/script.js"></script>
 </head>
 <body>
-
   <header class="nav">
     <div class="nav__inner">
       <a class="brand" href="index.html">
-        <span class="brand__text">Back to site</span>
+        <span class="brand__text">Rafael Mercado</span>
       </a>
+
+      <nav class="nav__links" aria-label="Resume navigation">
+        <a href="index.html">Portfolio</a>
+        <a href="assets/MERCADO-RESUME2026.pdf" class="pill" download>Download PDF</a>
+      </nav>
     </div>
   </header>
 
-  <main class="section" style="padding-top: 40px">
-    <h1 style="margin-bottom:16px;">Resume</h1>
+  <main class="resume-shell">
+    <section class="resume-hero">
+      <div>
+        <span class="kicker">Resume</span>
+        <h1>Full-stack web development, CMS, SEO, automation, and VA support.</h1>
+        <p>
+          A concise resume view for client and hiring conversations. The portfolio shows the visual work;
+          this page keeps the PDF close and easy to download.
+        </p>
+      </div>
 
-    <div style="height:80vh; border-radius:18px; overflow:hidden; border:1px solid rgba(15,23,42,0.10); background: rgba(255,255,255,0.72);">
+      <aside class="resume-card" aria-label="Resume highlights">
+        <span>Current focus</span>
+        <b>Web systems for lean teams</b>
+        <small>Full-stack builds, CMS pages, SEO content, integrations, and ongoing support.</small>
+      </aside>
+    </section>
+
+    <section class="resume-viewer" aria-label="Embedded resume PDF">
       <iframe
         src="assets/MERCADO-RESUME2026.pdf"
-        width="100%"
-        height="100%"
-        style="border:none;"
         title="Rafael Mercado Resume PDF"
       ></iframe>
-    </div>
+    </section>
   </main>
-
 </body>
 </html>
