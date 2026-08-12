@@ -17,6 +17,7 @@ if (burger && mobile) {
 }
 
 // Scroll reveal
+const prefersReducedMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
 const revealEls = document.querySelectorAll(".reveal");
 const io = new IntersectionObserver((entries) => {
   entries.forEach(e => {
@@ -37,13 +38,13 @@ if (scrollTopBtn) {
     } else {
       scrollTopBtn.classList.remove("visible");
     }
-  });
+  }, { passive: true });
 
   // Scroll to top on click
   scrollTopBtn.addEventListener("click", () => {
     window.scrollTo({
       top: 0,
-      behavior: "smooth"
+      behavior: prefersReducedMotion ? "auto" : "smooth"
     });
   });
 }
