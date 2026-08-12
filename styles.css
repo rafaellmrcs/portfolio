@@ -486,6 +486,12 @@ img{ max-width:100%; height:auto; display:block; }
   padding-top: 58px;
   padding-bottom: 58px;
 }
+#about{
+  padding-bottom: 36px;
+}
+#services{
+  padding-top: 36px;
+}
 .section--alt{
   border-top: 1px solid rgba(255,255,255,0.07);
   border-bottom: 1px solid rgba(255,255,255,0.07);
