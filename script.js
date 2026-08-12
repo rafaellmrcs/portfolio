@@ -48,30 +48,6 @@ if (canUsePointerMotion) {
   });
 }
 
-// Smooth anchor movement with sticky-nav offset
-document.querySelectorAll('a[href^="#"]').forEach((link) => {
-  link.addEventListener("click", (event) => {
-    const hash = link.getAttribute("href");
-    if (!hash || hash === "#") return;
-
-    const target = document.getElementById(hash.slice(1));
-    if (!target) return;
-
-    event.preventDefault();
-
-    const nav = document.querySelector(".nav");
-    const offset = (nav ? nav.offsetHeight : 72) + 14;
-    const top = Math.max(0, target.getBoundingClientRect().top + window.scrollY - offset);
-
-    window.scrollTo({
-      top,
-      behavior: prefersReducedMotion ? "auto" : "smooth"
-    });
-
-    window.history.pushState(null, "", hash);
-  });
-});
-
 // Scroll to top button
 const scrollTopBtn = document.getElementById("scrollTopBtn");
 
