@@ -97,78 +97,14 @@ a{ color: inherit; }
 .resume-shell{
   max-width: var(--max);
   margin: 0 auto;
-  padding: 58px 20px 74px;
+  padding: 18px 20px 74px;
 }
-.resume-hero{
-  display: grid;
-  grid-template-columns: minmax(0, 0.82fr) minmax(280px, 0.42fr);
-  gap: 18px;
-  align-items: stretch;
-  margin-bottom: 18px;
-}
-.resume-hero > div,
-.resume-card,
 .resume-viewer{
   border: 1px solid var(--stroke);
   background:
     linear-gradient(135deg, rgba(255,255,255,0.065), rgba(255,255,255,0.018)),
     var(--panel);
   border-radius: var(--radius);
-}
-.resume-hero > div{
-  padding: 30px;
-}
-.kicker{
-  display: inline-flex;
-  margin-bottom: 12px;
-  color: var(--warm);
-  font-size: 11px;
-  font-weight: 900;
-  letter-spacing: 1.5px;
-  text-transform: uppercase;
-}
-.resume-hero h1{
-  max-width: 820px;
-  font-size: clamp(32px, 4.5vw, 58px);
-  line-height: 1.02;
-  font-weight: 900;
-  letter-spacing: 0;
-}
-.resume-hero p{
-  max-width: 64ch;
-  margin-top: 14px;
-  color: var(--muted);
-  font-size: 15px;
-  line-height: 1.7;
-}
-.resume-card{
-  display: flex;
-  flex-direction: column;
-  justify-content: flex-end;
-  gap: 8px;
-  padding: 24px;
-  background:
-    linear-gradient(145deg, rgba(244,199,114,0.09), transparent 44%),
-    rgba(255,255,255,0.032);
-}
-.resume-card span{
-  color: var(--muted2);
-  font-size: 11px;
-  font-weight: 900;
-  letter-spacing: 1.2px;
-  text-transform: uppercase;
-}
-.resume-card b{
-  color: var(--text);
-  font-size: 22px;
-  line-height: 1.16;
-}
-.resume-card small{
-  color: var(--muted);
-  font-size: 13px;
-  line-height: 1.55;
-}
-.resume-viewer{
   height: min(82vh, 900px);
   min-height: 620px;
   overflow: hidden;
@@ -190,15 +126,7 @@ a{ color: inherit; }
     font-size: 12px;
   }
   .resume-shell{
-    padding: 42px 16px 56px;
-  }
-  .resume-hero{
-    grid-template-columns: 1fr;
-  }
-  .resume-hero > div,
-  .resume-card{
-    padding: 22px;
-    border-radius: 20px;
+    padding: 16px 16px 56px;
   }
   .resume-viewer{
     min-height: 560px;
