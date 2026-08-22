@@ -624,13 +624,13 @@ img{ max-width:100%; height:auto; display:block; }
 }
 .about-stack-grid{
   display: grid;
-  grid-template-columns: minmax(0, 0.88fr) minmax(320px, 0.62fr);
+  grid-template-columns: repeat(2, minmax(0,1fr));
   gap: 18px;
   align-items: stretch;
 }
 .story-head{
   margin-bottom: 0;
-  padding: 30px;
+  padding: 28px;
   border-radius: 24px;
   border: 1px solid rgba(255,255,255,0.09);
   background:
@@ -638,21 +638,21 @@ img{ max-width:100%; height:auto; display:block; }
     rgba(255,255,255,0.018);
 }
 .story-head h2{
-  max-width: 760px;
-  font-size: clamp(28px, 3.5vw, 48px);
-  line-height: 1.05;
+  max-width: 12ch;
+  font-size: clamp(30px, 3vw, 42px);
+  line-height: 1.08;
 }
 .about-stack__intro{
   display: flex;
   flex-direction: column;
   justify-content: space-between;
-  gap: 42px;
+  gap: 28px;
 }
 .about-stack__line{
-  max-width: 21ch;
-  color: rgba(255,255,255,0.82);
-  font-size: clamp(18px, 1.8vw, 24px);
-  line-height: 1.22;
+  max-width: 34ch;
+  color: var(--muted);
+  font-size: 15px;
+  line-height: 1.6;
   font-weight: 800;
 }
 .about-stack__tools{
