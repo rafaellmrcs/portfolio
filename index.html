@@ -101,15 +101,12 @@
       </section>
 
       <!-- ABOUT -->
-  <section id="about" class="section section--story">
-  <div class="story-grid">
-    <div class="section__head story-head reveal">
+  <section id="about" class="section section--story section--about-stack">
+  <div class="about-stack-grid">
+    <div class="section__head story-head about-stack__intro reveal">
       <span class="section-kicker">About Me</span>
       <h2>I build with taste,<br />structure, and<br />follow-through.</h2>
-    </div>
-
-    <div class="story-panel reveal">
-      <p>
+      <p class="about-stack__line">
         Clean builds. Clear updates. Reliable handoff.
       </p>
       <div class="story-facts" aria-label="Working details">
@@ -118,24 +115,81 @@
         <span><b>Best Fit</b> Small teams</span>
       </div>
     </div>
-  </div>
 
-  <div class="about-snapshot about-snapshot--visual reveal" aria-label="Project strengths">
-    <div>
-      <b>Web Dev</b>
-      <span>HTML, CSS, JavaScript, React, responsive UI</span>
-    </div>
-    <div>
-      <b>CMS + SEO</b>
-      <span>WordPress, Webflow, Shopify, content structure</span>
-    </div>
-    <div>
-      <b>Automation</b>
-      <span>Forms, email flows, payments, workflow cleanup</span>
-    </div>
-    <div>
-      <b>VA Support</b>
-      <span>Content updates, admin tasks, calm follow-through</span>
+    <div id="stack" class="about-stack__tools reveal" aria-label="Tech stack">
+      <span class="section-kicker">Tech Stack</span>
+      <h3>Tools that keep the work sharp.</h3>
+
+      <div class="stack-accordion" aria-label="Tool categories">
+        <details class="stack-panel" open>
+          <summary>
+            <span>
+              <small>Frontend</small>
+              <b>Interfaces and landing pages</b>
+            </span>
+            <i aria-hidden="true"></i>
+          </summary>
+          <ul class="stack-tools">
+            <li>HTML</li>
+            <li>CSS</li>
+            <li>JavaScript</li>
+            <li>React</li>
+          </ul>
+        </details>
+
+        <details class="stack-panel">
+          <summary>
+            <span>
+              <small>Backend</small>
+              <b>Serverless flows and forms</b>
+            </span>
+            <i aria-hidden="true"></i>
+          </summary>
+          <ul class="stack-tools">
+            <li>Node.js</li>
+            <li>Supabase</li>
+            <li>APIs</li>
+            <li>Forms</li>
+          </ul>
+        </details>
+
+        <details class="stack-panel">
+          <summary>
+            <span>
+              <small>CMS + SEO</small>
+              <b>Content systems and search basics</b>
+            </span>
+            <i aria-hidden="true"></i>
+          </summary>
+          <ul class="stack-tools">
+            <li>WordPress</li>
+            <li>Webflow</li>
+            <li>Shopify</li>
+            <li>Ghost</li>
+            <li>Elementor</li>
+            <li>Metadata</li>
+            <li>Schema</li>
+          </ul>
+        </details>
+
+        <details class="stack-panel">
+          <summary>
+            <span>
+              <small>Ops</small>
+              <b>Automation, payments, and support</b>
+            </span>
+            <i aria-hidden="true"></i>
+          </summary>
+          <ul class="stack-tools">
+            <li>Brevo</li>
+            <li>Twilio</li>
+            <li>Stripe</li>
+            <li>PayPal</li>
+            <li>Email flows</li>
+            <li>Admin support</li>
+          </ul>
+        </details>
+      </div>
     </div>
   </div>
 
@@ -215,87 +269,6 @@
         <span>WordPress</span><span>Payments</span><span>Workflows</span><span>VA</span>
       </div>
     </article>
-  </div>
-</section>
-
-      <!-- TECH STACK -->
-  <section id="stack" class="section stack-section">
-  <div class="stack-showcase reveal">
-    <div>
-      <span class="section-kicker">Tech Stack</span>
-      <h2>Tools that keep the work sharp without making the site feel heavy.</h2>
-    </div>
-
-    <div class="stack-accordion" aria-label="Tool categories">
-      <details class="stack-panel" open>
-        <summary>
-          <span>
-            <small>Frontend</small>
-            <b>Interfaces and landing pages</b>
-          </span>
-          <i aria-hidden="true"></i>
-        </summary>
-        <ul class="stack-tools">
-          <li>HTML</li>
-          <li>CSS</li>
-          <li>JavaScript</li>
-          <li>React</li>
-        </ul>
-      </details>
-
-      <details class="stack-panel">
-        <summary>
-          <span>
-            <small>Backend</small>
-            <b>Serverless flows and forms</b>
-          </span>
-          <i aria-hidden="true"></i>
-        </summary>
-        <ul class="stack-tools">
-          <li>Node.js</li>
-          <li>Supabase</li>
-          <li>APIs</li>
-          <li>Forms</li>
-        </ul>
-      </details>
-
-      <details class="stack-panel">
-        <summary>
-          <span>
-            <small>CMS + SEO</small>
-            <b>Content systems and search basics</b>
-          </span>
-          <i aria-hidden="true"></i>
-        </summary>
-        <ul class="stack-tools">
-          <li>WordPress</li>
-          <li>Webflow</li>
-          <li>Shopify</li>
-          <li>Ghost</li>
-          <li>Elementor</li>
-          <li>Metadata</li>
-          <li>Schema</li>
-        </ul>
-      </details>
-
-      <details class="stack-panel">
-        <summary>
-          <span>
-            <small>Ops</small>
-            <b>Automation, payments, and support</b>
-          </span>
-          <i aria-hidden="true"></i>
-        </summary>
-        <ul class="stack-tools">
-          <li>Brevo</li>
-          <li>Twilio</li>
-          <li>Stripe</li>
-          <li>PayPal</li>
-          <li>Email flows</li>
-          <li>Admin support</li>
-        </ul>
-      </details>
-    </div>
   </div>
 </section>
 
