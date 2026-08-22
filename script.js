@@ -1,21 +1,3 @@
-// Mobile nav
-const burger = document.querySelector(".nav__burger");
-const mobile = document.querySelector(".nav__mobile");
-
-if (burger && mobile) {
-  burger.addEventListener("click", () => {
-    mobile.classList.toggle("is-open");
-    mobile.setAttribute("aria-hidden", mobile.classList.contains("is-open") ? "false" : "true");
-  });
-
-  mobile.querySelectorAll("a").forEach(a => {
-    a.addEventListener("click", () => {
-      mobile.classList.remove("is-open");
-      mobile.setAttribute("aria-hidden", "true");
-    });
-  });
-}
-
 // Scroll reveal
 const prefersReducedMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
 const revealEls = document.querySelectorAll(".reveal");
