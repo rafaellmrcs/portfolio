@@ -148,7 +148,7 @@ img{ max-width:100%; height:auto; display:block; }
   display:grid;
   grid-template-columns: minmax(0, 0.92fr) minmax(320px, 0.68fr);
   gap: 30px;
-  align-items: center;
+  align-items: stretch;
   position: relative;
 }
 .hero__inner--editorial{
@@ -163,36 +163,37 @@ img{ max-width:100%; height:auto; display:block; }
 
 /* Badge */
 .badge{
-  display:inline-flex; align-items:center; gap:10px;
+  display:inline-flex; align-items:center; gap:12px;
   width: fit-content;
-  background: rgba(255,255,255,0.045);
-  border: 1px solid rgba(255,255,255,0.10);
-  padding: 8px 16px;
-  border-radius: 999px;
-  color: var(--muted);
+  max-width: 100%;
+  color: rgba(244,199,114,0.78);
   font-weight: 800;
-  font-size: 13px;
+  font-size: 12px;
+  line-height: 1.4;
+  letter-spacing: 1.2px;
+  text-transform: uppercase;
 }
 .badge::before{
   content:'';
-  width: 7px; height: 7px;
+  width: 36px; height: 1px;
   border-radius: 999px;
-  background: var(--warm);
-  box-shadow: 0 0 18px rgba(244,199,114,0.52);
+  background: rgba(244,199,114,0.55);
   flex-shrink: 0;
 }
 @media (max-width: 720px){
   .badge{
-    width: 100%;
+    width: auto;
     max-width: 100%;
     flex-wrap: wrap;
     justify-content: center;
-    padding: 8px 12px;
-    font-size: 12px;
+    font-size: 11px;
     line-height: 1.35;
     text-align: center;
     white-space: normal;
     overflow-wrap: anywhere;
+  }
+  .badge::before{
+    width: 22px;
   }
 }
 
@@ -296,12 +297,14 @@ img{ max-width:100%; height:auto; display:block; }
 
 .hero-portrait{
   position: relative;
-  display: grid;
-  gap: 14px;
+  display: flex;
+  align-self: stretch;
 }
 .portrait-frame{
   position: relative;
-  min-height: clamp(420px, 52svh, 500px);
+  flex: 1;
+  min-height: clamp(560px, calc(100svh - 128px), 640px);
+  height: 100%;
   overflow: hidden;
   border-radius: 28px;
   border: 1px solid rgba(255,255,255,0.12);
@@ -311,7 +314,7 @@ img{ max-width:100%; height:auto; display:block; }
 .portrait-frame img{
   width: 100%;
   height: 100%;
-  min-height: clamp(420px, 52svh, 500px);
+  min-height: 100%;
   object-fit: cover;
   object-position: center;
   filter: saturate(0.96) contrast(1.03);
