@@ -82,6 +82,79 @@ projectFilters.forEach((button) => {
   });
 });
 
+// Featured work carousel
+const featuredCarousel = document.querySelector(".featured-work");
+const featuredSlides = document.querySelectorAll("[data-carousel-slide]");
+const featuredDots = document.querySelectorAll("[data-carousel-dot]");
+const featuredPrev = document.querySelector("[data-carousel-prev]");
+const featuredNext = document.querySelector("[data-carousel-next]");
+let activeFeaturedSlide = 0;
+let featuredTimer = null;
+
+function setFeaturedSlide(index) {
+  if (!featuredSlides.length) return;
+
+  activeFeaturedSlide = (index + featuredSlides.length) % featuredSlides.length;
+
+  featuredSlides.forEach((slide, slideIndex) => {
+    const isActive = slideIndex === activeFeaturedSlide;
+    slide.classList.toggle("is-active", isActive);
+    slide.setAttribute("aria-hidden", isActive ? "false" : "true");
+  });
+
+  featuredDots.forEach((dot, dotIndex) => {
+    const isActive = dotIndex === activeFeaturedSlide;
+    dot.classList.toggle("is-active", isActive);
+    dot.setAttribute("aria-pressed", isActive ? "true" : "false");
+  });
+}
+
+function stopFeaturedCarousel() {
+  if (!featuredTimer) return;
+
+  window.clearInterval(featuredTimer);
+  featuredTimer = null;
+}
+
+function startFeaturedCarousel() {
+  if (prefersReducedMotion || featuredSlides.length < 2) return;
+
+  stopFeaturedCarousel();
+  featuredTimer = window.setInterval(() => {
+    setFeaturedSlide(activeFeaturedSlide + 1);
+  }, 5600);
+}
+
+if (featuredSlides.length) {
+  setFeaturedSlide(0);
+
+  featuredPrev?.addEventListener("click", () => {
+    setFeaturedSlide(activeFeaturedSlide - 1);
+    startFeaturedCarousel();
+  });
+
+  featuredNext?.addEventListener("click", () => {
+    setFeaturedSlide(activeFeaturedSlide + 1);
+    startFeaturedCarousel();
+  });
+
+  featuredDots.forEach((dot) => {
+    dot.addEventListener("click", () => {
+      setFeaturedSlide(Number(dot.dataset.carouselDot) || 0);
+      startFeaturedCarousel();
+    });
+  });
+
+  if (featuredCarousel) {
+    featuredCarousel.addEventListener("pointerenter", stopFeaturedCarousel);
+    featuredCarousel.addEventListener("pointerleave", startFeaturedCarousel);
+    featuredCarousel.addEventListener("focusin", stopFeaturedCarousel);
+    featuredCarousel.addEventListener("focusout", startFeaturedCarousel);
+  }
+
+  startFeaturedCarousel();
+}
+
 // Subtle premium tilt for visual cards
 const canUsePointerMotion = !prefersReducedMotion && window.matchMedia("(pointer: fine)").matches;
 
