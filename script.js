@@ -42,6 +42,46 @@ stackPanels.forEach((panel) => {
   });
 });
 
+// Selected work filters
+const projectFilters = document.querySelectorAll(".project-filter");
+const projectsGrid = document.querySelector(".projects-grid");
+const projectCards = document.querySelectorAll(".project-card");
+const projectsEmpty = document.querySelector(".projects-empty");
+
+function filterProjects(filter) {
+  let visibleCount = 0;
+
+  projectCards.forEach((card) => {
+    const categories = card.dataset.categories?.split(" ") || [];
+    const shouldShow = filter === "all" || categories.includes(filter);
+
+    card.classList.toggle("is-hidden", !shouldShow);
+    if (shouldShow) visibleCount += 1;
+  });
+
+  if (projectsGrid) {
+    projectsGrid.classList.toggle("is-filtered", filter !== "all");
+  }
+
+  if (projectsEmpty) {
+    projectsEmpty.hidden = visibleCount > 0;
+  }
+}
+
+projectFilters.forEach((button) => {
+  button.addEventListener("click", () => {
+    const filter = button.dataset.filter || "all";
+
+    projectFilters.forEach((otherButton) => {
+      const isActive = otherButton === button;
+      otherButton.classList.toggle("is-active", isActive);
+      otherButton.setAttribute("aria-pressed", isActive ? "true" : "false");
+    });
+
+    filterProjects(filter);
+  });
+});
+
 // Subtle premium tilt for visual cards
 const canUsePointerMotion = !prefersReducedMotion && window.matchMedia("(pointer: fine)").matches;
 

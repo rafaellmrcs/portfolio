@@ -320,9 +320,18 @@
     </p>
   </div>
 
+  <div class="project-filters reveal" aria-label="Filter selected work">
+    <button class="project-filter is-active" type="button" data-filter="all" aria-pressed="true">All</button>
+    <button class="project-filter" type="button" data-filter="website" aria-pressed="false">Websites</button>
+    <button class="project-filter" type="button" data-filter="cms" aria-pressed="false">CMS</button>
+    <button class="project-filter" type="button" data-filter="automation" aria-pressed="false">Automation</button>
+    <button class="project-filter" type="button" data-filter="seo" aria-pressed="false">SEO / Writing</button>
+    <button class="project-filter" type="button" data-filter="apps" aria-pressed="false">Apps</button>
+  </div>
+
   <div class="projects-grid">
 
-    <article class="project-card reveal">
+    <article class="project-card project-card--featured reveal" data-categories="website cms seo">
       <button class="project-card__btn project-trigger" type="button" data-modal-target="project-modal-1" aria-haspopup="dialog" aria-controls="project-modal-1">
         <div class="project-card__img">
           <img src="assets/p1.JPG" alt="Preview of Total Car Care website" />
@@ -343,7 +352,7 @@
       </button>
     </article>
 
-    <article class="project-card reveal">
+    <article class="project-card project-card--featured reveal" data-categories="cms automation apps">
       <button class="project-card__btn project-trigger" type="button" data-modal-target="project-modal-2" aria-haspopup="dialog" aria-controls="project-modal-2">
         <div class="project-card__img">
           <img src="assets/p2.png" alt="Preview of Project SmallTalk website" />
@@ -364,7 +373,7 @@
       </button>
     </article>
 
-    <article class="project-card reveal">
+    <article class="project-card reveal" data-categories="website cms seo writing">
       <button class="project-card__btn project-trigger" type="button" data-modal-target="project-modal-3" aria-haspopup="dialog" aria-controls="project-modal-3">
         <div class="project-card__img">
           <img src="assets/p3.JPG" alt="Preview of Heart Health MD website" />
@@ -385,7 +394,7 @@
       </button>
     </article>
 
-    <article class="project-card reveal">
+    <article class="project-card reveal" data-categories="website cms seo automation">
       <button class="project-card__btn project-trigger" type="button" data-modal-target="project-modal-4" aria-haspopup="dialog" aria-controls="project-modal-4">
         <div class="project-card__img">
           <img src="assets/p4.png" alt="Preview of IPPhantom website" />
@@ -406,7 +415,7 @@
       </button>
     </article>
 
-    <article class="project-card reveal">
+    <article class="project-card reveal" data-categories="website cms automation apps">
       <button class="project-card__btn project-trigger" type="button" data-modal-target="project-modal-6" aria-haspopup="dialog" aria-controls="project-modal-6">
         <div class="project-card__img">
           <img src="assets/p6.png" alt="Preview of MyTrueIp website" />
@@ -427,7 +436,7 @@
       </button>
     </article>
 
-    <article class="project-card reveal">
+    <article class="project-card reveal" data-categories="website cms seo">
       <button class="project-card__btn project-trigger" type="button" data-modal-target="project-modal-9" aria-haspopup="dialog" aria-controls="project-modal-9">
         <div class="project-card__img">
           <img src="assets/p9.png" alt="Preview of NZIL website" />
@@ -448,7 +457,7 @@
       </button>
     </article>
 
-    <article class="project-card reveal">
+    <article class="project-card reveal" data-categories="cms seo writing">
       <button class="project-card__btn project-trigger" type="button" data-modal-target="project-modal-10" aria-haspopup="dialog" aria-controls="project-modal-10">
         <div class="project-card__img">
           <img src="assets/p10.png" alt="Preview of Dropship AU website" />
@@ -469,7 +478,7 @@
       </button>
     </article>
 
-    <article class="project-card reveal">
+    <article class="project-card reveal" data-categories="cms seo writing">
       <button class="project-card__btn project-trigger" type="button" data-modal-target="project-modal-11" aria-haspopup="dialog" aria-controls="project-modal-11">
         <div class="project-card__img">
           <img src="assets/p11.png" alt="Preview of Dropship USA website" />
@@ -490,7 +499,7 @@
       </button>
     </article>
 
-    <article class="project-card reveal">
+    <article class="project-card reveal" data-categories="website cms seo">
       <button class="project-card__btn project-trigger" type="button" data-modal-target="project-modal-12" aria-haspopup="dialog" aria-controls="project-modal-12">
         <div class="project-card__img">
           <img src="assets/p12.png" alt="Preview of RefinanceRadar website" />
@@ -511,7 +520,7 @@
       </button>
     </article>
 
-    <article class="project-card reveal">
+    <article class="project-card reveal" data-categories="website apps seo">
       <button class="project-card__btn project-trigger" type="button" data-modal-target="project-modal-13" aria-haspopup="dialog" aria-controls="project-modal-13">
         <div class="project-card__img">
           <img src="assets/p13.png" alt="Preview of Join Ascend website" />
@@ -533,6 +542,7 @@
     </article>
 
   </div>
+  <p class="projects-empty" hidden aria-live="polite">No projects in this filter yet.</p>
 
   <section id="writing" class="writing-samples" aria-labelledby="writing-title">
     <div class="writing-samples__head">
