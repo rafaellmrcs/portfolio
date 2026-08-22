@@ -202,19 +202,13 @@ img{ max-width:100%; height:auto; display:block; }
   font-size: clamp(40px, 5.5vw, 72px);
   line-height: 1;
   letter-spacing: 0;
-  margin: 20px 0 16px;
+  margin: 20px 0 0;
 }
 .grad{
   background: linear-gradient(135deg, var(--warm), var(--teal));
   -webkit-background-clip: text;
   background-clip:text;
   color: transparent;
-}
-.sub{
-  color: var(--muted);
-  font-size: 16px;
-  max-width: 48ch;
-  line-height: 1.58;
 }
 .hero__cta{ display:flex; gap:12px; align-items:center; margin-top: 20px; flex-wrap: wrap; }
 
@@ -615,12 +609,6 @@ img{ max-width:100%; height:auto; display:block; }
   max-width: none;
   white-space: nowrap;
 }
-.section__head p{
-  color: var(--muted);
-  max-width: 60ch;
-  margin-top: 10px;
-  font-size: 15px;
-}
 .section__head--split{
   display: grid;
   grid-template-columns: minmax(0, 0.78fr) minmax(260px, 0.42fr);
@@ -672,9 +660,10 @@ img{ max-width:100%; height:auto; display:block; }
     rgba(255,255,255,0.028);
 }
 .story-panel p{
-  color: rgba(255,255,255,0.78);
-  font-size: 18px;
-  line-height: 1.55;
+  max-width: 18ch;
+  color: rgba(255,255,255,0.82);
+  font-size: clamp(18px, 1.8vw, 23px);
+  line-height: 1.22;
   font-weight: 800;
 }
 .story-facts{
@@ -1038,13 +1027,6 @@ img{ max-width:100%; height:auto; display:block; }
   font-size: clamp(26px, 3vw, 42px);
   line-height: 1.08;
   font-weight: 900;
-}
-.stack-showcase p{
-  max-width: 56ch;
-  margin-top: 10px;
-  color: var(--muted);
-  font-size: 14px;
-  line-height: 1.7;
 }
 .stack-accordion{
   align-self: center;
@@ -1484,13 +1466,6 @@ img{ max-width:100%; height:auto; display:block; }
   font-weight: 900;
   letter-spacing: -0.2px;
 }
-.writing-samples__head p{
-  max-width: 34ch;
-  margin-top: 8px;
-  color: var(--muted);
-  font-size: 14px;
-  line-height: 1.65;
-}
 .writing-grid{
   display: grid;
   grid-template-columns: repeat(2, minmax(0,1fr));
@@ -1879,9 +1854,8 @@ small.proof{
   border: 1px solid var(--stroke);
 }
 .contact__left h2{ margin-bottom: 12px; font-size: clamp(22px, 2.2vw, 32px); letter-spacing: -0.3px; }
-.contact__left p{ color: var(--muted); font-size: 14px; line-height: 1.65; }
 .contact__info{
-  margin-top: 20px;
+  margin-top: 22px;
   display:grid;
   grid-template-columns: 1fr 1fr;
   gap: 10px;
@@ -2089,10 +2063,6 @@ input::placeholder, textarea::placeholder{ color: rgba(255,255,255,0.35); }
     line-height: 1.08;
     overflow-wrap: break-word;
   }
-  .sub{
-    max-width: 32ch;
-    margin-inline: auto;
-  }
   .hero__cta{ justify-content: center; }
   .hero-notes{
     display: grid;
@@ -2107,7 +2077,6 @@ input::placeholder, textarea::placeholder{ color: rgba(255,255,255,0.35); }
   .portrait-frame,
   .portrait-frame img{ min-height: 340px; }
   .portrait-frame{ border-radius: 22px; }
-  .sub{ font-size: 15px; }
   .snapshot-panel{ padding: 18px; text-align: left; }
   .snapshot-grid{ grid-template-columns: 1fr; }
   .snapshot-item,
