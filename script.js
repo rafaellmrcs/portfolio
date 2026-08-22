@@ -27,6 +27,21 @@ const io = new IntersectionObserver((entries) => {
 
 revealEls.forEach(el => io.observe(el));
 
+// Tech stack accordion
+const stackPanels = document.querySelectorAll(".stack-panel");
+
+stackPanels.forEach((panel) => {
+  panel.addEventListener("toggle", () => {
+    if (!panel.open) return;
+
+    stackPanels.forEach((otherPanel) => {
+      if (otherPanel !== panel) {
+        otherPanel.open = false;
+      }
+    });
+  });
+});
+
 // Subtle premium tilt for visual cards
 const canUsePointerMotion = !prefersReducedMotion && window.matchMedia("(pointer: fine)").matches;
 
